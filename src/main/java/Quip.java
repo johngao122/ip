@@ -27,7 +27,10 @@ public class Quip {
         System.out.println(LINE);
     }
 
-    private static void addTodoTask(String name) {
+    private static void addTodoTask(String name) throws QuipException {
+        if (name.isBlank()) {
+            throw new QuipException("The description of a todo cannot be empty.");
+        }
         Todo todo = new Todo(name);
         tasks.add(todo);
         System.out.println(LINE);
@@ -37,8 +40,11 @@ public class Quip {
         System.out.println(LINE);
     }
 
-    private static void addDeadlineTask(String command) {
-        String[] deadlineParts = command.split(" /by ");
+    private static void addDeadlineTask(String command) throws QuipException {
+        String[] deadlineParts = command.split(" /by ", 2);
+        if (deadlineParts.length < 2 || deadlineParts[0].isBlank() || deadlineParts[1].isBlank()) {
+            throw new QuipException("Invalid deadline format. Use: <description> /by <time>");
+        }
         Deadline deadline = new Deadline(deadlineParts[0], deadlineParts[1]);
         tasks.add(deadline);
         System.out.println(LINE);
@@ -48,11 +54,13 @@ public class Quip {
         System.out.println(LINE);
     }
 
-    private static void addEventTask(String command) {
-        String[] eventParts = command.split(" /from ");
-        String eventName = eventParts[0];
-        String[] eventTime = eventParts[1].split(" /to ");
-        Event event = new Event(eventName, eventTime[0], eventTime[1]);
+    private static void addEventTask(String command) throws QuipException {
+        String[] eventParts = command.split(" /from ", 2);
+        if (eventParts.length < 2 || eventParts[0].isBlank() || !eventParts[1].contains(" /to ")) {
+            throw new QuipException("Invalid event format. Use: <description> /from <start> /to <end>");
+        }
+        String[] eventTime = eventParts[1].split(" /to ", 2);
+        Event event = new Event(eventParts[0], eventTime[0], eventTime[1]);
         tasks.add(event);
         System.out.println(LINE);
         System.out.println("Event scheduled! Here's the scoop:");
@@ -62,25 +70,35 @@ public class Quip {
     }
 
     private static void listTasks() {
+        if (tasks.isEmpty()) {
+            System.out.println(LINE);
+            System.out.println("Your task list is empty! Time to add some tasks.");
+            System.out.println(LINE);
+            return;
+        }
         System.out.println(LINE);
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < tasks.size(); i++) {
-            String message = (i + 1) + ". ";
-            message += tasks.get(i);
+            String message = (i + 1) + ". " + tasks.get(i);
             System.out.println(message);
         }
         System.out.println(LINE);
     }
 
-    private static void markTask(int taskToMark) {
+    private static void markTask(int taskToMark) throws QuipException {
+        if (taskToMark < 1 || taskToMark > tasks.size()) {
+            throw new QuipException("Invalid task number. Please try again.");
+        }
         tasks.get(taskToMark - 1).markAsDone();
         System.out.println(LINE);
         System.out.println("Another one bites the dust: " + tasks.get(taskToMark - 1));
-        System.out.println(tasks.get(taskToMark - 1));
         System.out.println(LINE);
     }
 
-    private static void unmarkTask(int taskToUnmark) {
+    private static void unmarkTask(int taskToUnmark) throws QuipException {
+        if (taskToUnmark < 1 || taskToUnmark > tasks.size()) {
+            throw new QuipException("Invalid task number. Please try again.");
+        }
         tasks.get(taskToUnmark - 1).markAsUndone();
         System.out.println(LINE);
         System.out.println("Let’s pretend that task wasn’t done yet:");
@@ -88,40 +106,58 @@ public class Quip {
         System.out.println(LINE);
     }
 
+    private static void deleteTask(int taskToDelete) throws QuipException {
+        if (taskToDelete < 1 || taskToDelete > tasks.size()) {
+            throw new QuipException("Invalid task number. Please try again.");
+        }
+        Task task = tasks.remove(taskToDelete - 1);
+        System.out.println(LINE);
+        System.out.println("That task has vanished faster than your weekend plans. It’s gone, mortal!");
+        System.out.println(task);
+        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+        System.out.println(LINE);
+    }
+
     private static void processCommands() {
         Scanner sc = new Scanner(System.in);
         while (true) {
-            String command = sc.nextLine();
-            String[] commandParts = command.split(" ");
-            switch (commandParts[0]) {
-                case "bye":
-                    exit();
-                    return;
-                case "list":
-                    listTasks();
-                    break;
-                case "mark":
-                    markTask(Integer.parseInt(commandParts[1]));
-                    break;
-                case "unmark":
-                    unmarkTask(Integer.parseInt(commandParts[1]));
-                    break;
-                case "todo":
-                    addTodoTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
-                    break;
-                case "deadline":
-                    addDeadlineTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
-                    break;
-                case "event":
-                    addEventTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
-                    break;
-                default:
-                    System.out.println("I'm sorry, I don't understand that command.");
-                    break;
+            try {
+                String command = sc.nextLine();
+                String[] commandParts = command.split(" ");
+                switch (commandParts[0]) {
+                    case "bye":
+                        exit();
+                        return;
+                    case "list":
+                        listTasks();
+                        break;
+                    case "mark":
+                        markTask(Integer.parseInt(commandParts[1]));
+                        break;
+                    case "unmark":
+                        unmarkTask(Integer.parseInt(commandParts[1]));
+                        break;
+                    case "todo":
+                        addTodoTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
+                        break;
+                    case "deadline":
+                        addDeadlineTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
+                        break;
+                    case "event":
+                        addEventTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
+                        break;
+                    case "delete":
+                        deleteTask(Integer.parseInt(commandParts[1]));
+                    default:
+                        throw new QuipException("I'm sorry, I don't understand that command.");
+                }
+            } catch (QuipException e) {
+                System.out.println(LINE);
+                System.out.println(e.getMessage());
+                System.out.println(LINE);
             }
         }
     }
-
 
     public static void main(String[] args) {
         greet();
