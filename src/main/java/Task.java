@@ -2,10 +2,11 @@ public class Task {
     private final String task;
     private boolean done;
 
-    public Task(String task){
+    Task(String task) {
         this.task = task;
         this.done = false;
     }
+
 
     void markAsDone(){
         this.done = true;
@@ -19,8 +20,9 @@ public class Task {
         return this.done;
     }
 
+
     @Override
     public String toString(){
-        return this.task;
+        return this.done ? "[X] " + this.task : "[ ] " + this.task;
     }
 }

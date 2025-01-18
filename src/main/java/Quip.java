@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class Quip {
                 "\\_____\\ \\_/____/|__|   __/ \n" +
                 "       \\__>        |__|    \n";
         System.out.println(logo);
-        System.out.println("Hi there human! I'm " + NAME + "!");
+        System.out.println("Hi there mortal! I'm " + NAME + "!");
         System.out.println("What shenanigans can I help you with today?");
         System.out.println(LINE);
     }
@@ -26,11 +27,36 @@ public class Quip {
         System.out.println(LINE);
     }
 
-    private static void addTask(String task) {
-        tasks.add(new Task(task));
+    private static void addTodoTask(String name) {
+        Todo todo = new Todo(name);
+        tasks.add(todo);
         System.out.println(LINE);
-        System.out.println("Gotcha. I've added this task:");
-        System.out.println("  " + task);
+        System.out.println("I’ve added this little nugget to your to-do list:");
+        System.out.println(todo);
+        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+        System.out.println(LINE);
+    }
+
+    private static void addDeadlineTask(String command) {
+        String[] deadlineParts = command.split(" /by ");
+        Deadline deadline = new Deadline(deadlineParts[0], deadlineParts[1]);
+        tasks.add(deadline);
+        System.out.println(LINE);
+        System.out.println("Deadline? Challenge accepted! I’ve added this:");
+        System.out.println(deadline);
+        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+        System.out.println(LINE);
+    }
+
+    private static void addEventTask(String command) {
+        String[] eventParts = command.split(" /from ");
+        String eventName = eventParts[0];
+        String[] eventTime = eventParts[1].split(" /to ");
+        Event event = new Event(eventName, eventTime[0], eventTime[1]);
+        tasks.add(event);
+        System.out.println(LINE);
+        System.out.println("Event scheduled! Here's the scoop:");
+        System.out.println(event);
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
         System.out.println(LINE);
     }
@@ -40,10 +66,25 @@ public class Quip {
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < tasks.size(); i++) {
             String message = (i + 1) + ". ";
-            message += tasks.get(i).isDone() ? "[X] " : "[ ] ";
             message += tasks.get(i);
             System.out.println(message);
         }
+        System.out.println(LINE);
+    }
+
+    private static void markTask(int taskToMark) {
+        tasks.get(taskToMark - 1).markAsDone();
+        System.out.println(LINE);
+        System.out.println("Another one bites the dust: " + tasks.get(taskToMark - 1));
+        System.out.println("  [X] " + tasks.get(taskToMark - 1));
+        System.out.println(LINE);
+    }
+
+    private static void unmarkTask(int taskToUnmark) {
+        tasks.get(taskToUnmark - 1).markAsUndone();
+        System.out.println(LINE);
+        System.out.println("Let’s pretend that task wasn’t done yet:");
+        System.out.println(tasks.get(taskToUnmark - 1));
         System.out.println(LINE);
     }
 
@@ -51,28 +92,32 @@ public class Quip {
         while (true) {
             Scanner sc = new Scanner(System.in);
             String command = sc.nextLine();
-            if (command.startsWith("mark")) {
-                String[] parts = command.split(" ");
-                int index = Integer.parseInt(parts[1]) - 1;
-                tasks.get(index).markAsDone();
-                System.out.println("Nice! So you have finished this task: " + tasks.get(index));
-            } else if (command.startsWith("unmark")) {
-                String[] parts = command.split(" ");
-                int index = Integer.parseInt(parts[1]) - 1;
-                tasks.get(index).markAsUndone();
-                System.out.println("Alright! I've marked this task as undone: " + tasks.get(index));
-            } else {
-                switch (command) {
-                    case "bye":
-                        exit();
-                        return;
-                    case "list":
-                        listTasks();
-                        break;
-                    default:
-                        addTask(command);
-                        break;
-                }
+            String[] commandParts = command.split(" ");
+            switch (commandParts[0]) {
+                case "bye":
+                    exit();
+                    return;
+                case "list":
+                    listTasks();
+                    break;
+                case "mark":
+                    markTask(Integer.parseInt(commandParts[1]));
+                    break;
+                case "unmark":
+                    unmarkTask(Integer.parseInt(commandParts[1]));
+                    break;
+                case "todo":
+                    addTodoTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
+                    break;
+                case "deadline":
+                    addDeadlineTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
+                    break;
+                case "event":
+                    addEventTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
+                    break;
+                default:
+                    System.out.println("I'm sorry, I don't understand that command.");
+                    break;
             }
         }
     }
