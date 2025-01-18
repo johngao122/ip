@@ -26,7 +26,7 @@ public class Quip {
         System.out.println(LINE);
     }
 
-    private static void addTask (String task){
+    private static void addTask(String task) {
         tasks.add(new Task(task));
         System.out.println(LINE);
         System.out.println("Gotcha. I've added this task:");
@@ -35,29 +35,44 @@ public class Quip {
         System.out.println(LINE);
     }
 
-    private static void listTasks(){
+    private static void listTasks() {
         System.out.println(LINE);
         System.out.println("Here are the tasks in your list:");
-        for (int i = 0; i < tasks.size(); i++){
-            System.out.println((i + 1) + ". " + tasks.get(i));
+        for (int i = 0; i < tasks.size(); i++) {
+            String message = (i + 1) + ". ";
+            message += tasks.get(i).isDone() ? "[X] " : "[ ] ";
+            message += tasks.get(i);
+            System.out.println(message);
         }
         System.out.println(LINE);
     }
 
-    private static void processCommands(){
-        while(true){
+    private static void processCommands() {
+        while (true) {
             Scanner sc = new Scanner(System.in);
             String command = sc.nextLine();
-            switch (command){
-                case "bye":
-                    exit();
-                    return;
-                case "list":
-                    listTasks();
-                    break;
-                default:
-                    addTask(command);
-                    break;
+            if (command.startsWith("mark")) {
+                String[] parts = command.split(" ");
+                int index = Integer.parseInt(parts[1]) - 1;
+                tasks.get(index).markAsDone();
+                System.out.println("Nice! So you have finished this task: " + tasks.get(index));
+            } else if (command.startsWith("unmark")) {
+                String[] parts = command.split(" ");
+                int index = Integer.parseInt(parts[1]) - 1;
+                tasks.get(index).markAsUndone();
+                System.out.println("Alright! I've marked this task as undone: " + tasks.get(index));
+            } else {
+                switch (command) {
+                    case "bye":
+                        exit();
+                        return;
+                    case "list":
+                        listTasks();
+                        break;
+                    default:
+                        addTask(command);
+                        break;
+                }
             }
         }
     }

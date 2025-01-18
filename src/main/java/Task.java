@@ -7,8 +7,16 @@ public class Task {
         this.done = false;
     }
 
-    private void markAsDone(){
+    void markAsDone(){
         this.done = true;
+    }
+
+    void markAsUndone(){
+        this.done = false;
+    }
+
+    boolean isDone(){
+        return this.done;
     }
 
     @Override
