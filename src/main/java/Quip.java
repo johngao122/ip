@@ -20,6 +20,10 @@ public class Quip {
         System.out.println(LINE);
     }
 
+    private static void processCommands(){
+
+    }
+
 
     public static void main(String[] args) {
         greet();
