@@ -1,0 +1,8 @@
+todo Buy groceries
+todo Call mom
+deadline Submit report /by 2023-12-31
+event Team meeting /from 2023-11-20 10:00 /to 2023-11-20 12:00
+list
+mark 2
+unmark 2
+bye

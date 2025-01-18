@@ -76,7 +76,7 @@ public class Quip {
         tasks.get(taskToMark - 1).markAsDone();
         System.out.println(LINE);
         System.out.println("Another one bites the dust: " + tasks.get(taskToMark - 1));
-        System.out.println("  [X] " + tasks.get(taskToMark - 1));
+        System.out.println(tasks.get(taskToMark - 1));
         System.out.println(LINE);
     }
 
@@ -89,8 +89,8 @@ public class Quip {
     }
 
     private static void processCommands() {
+        Scanner sc = new Scanner(System.in);
         while (true) {
-            Scanner sc = new Scanner(System.in);
             String command = sc.nextLine();
             String[] commandParts = command.split(" ");
             switch (commandParts[0]) {
