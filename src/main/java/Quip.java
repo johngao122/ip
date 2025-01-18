@@ -122,34 +122,37 @@ public class Quip {
         Scanner sc = new Scanner(System.in);
         while (true) {
             try {
-                String command = sc.nextLine();
-                String[] commandParts = command.split(" ");
-                switch (commandParts[0]) {
-                    case "bye":
+                String input = sc.nextLine();
+                String[] commandParts = input.split(" ");
+                Command command = Command.fromString(commandParts[0]);
+
+                switch (command) {
+                    case BYE:
                         exit();
                         return;
-                    case "list":
+                    case LIST:
                         listTasks();
                         break;
-                    case "mark":
+                    case MARK:
                         markTask(Integer.parseInt(commandParts[1]));
                         break;
-                    case "unmark":
+                    case UNMARK:
                         unmarkTask(Integer.parseInt(commandParts[1]));
                         break;
-                    case "todo":
+                    case TODO:
                         addTodoTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
                         break;
-                    case "deadline":
+                    case DEADLINE:
                         addDeadlineTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
                         break;
-                    case "event":
+                    case EVENT:
                         addEventTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
                         break;
-                    case "delete":
+                    case DELETE:
                         deleteTask(Integer.parseInt(commandParts[1]));
+                        break;
                     default:
-                        throw new QuipException("I'm sorry, I don't understand that command.");
+                        throw new QuipException("I’m sorry, I don’t know what that means.");
                 }
             } catch (QuipException e) {
                 System.out.println(LINE);

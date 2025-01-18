@@ -1,28 +1,32 @@
 public class Task {
     private final String task;
+    private final TaskType type;
     private boolean done;
 
-    Task(String task) {
+    Task(String task, TaskType type) {
         this.task = task;
+        this.type = type;
         this.done = false;
     }
 
 
-    void markAsDone(){
+    void markAsDone() {
         this.done = true;
     }
 
-    void markAsUndone(){
+    void markAsUndone() {
         this.done = false;
     }
 
-    boolean isDone(){
+    boolean isDone() {
         return this.done;
     }
 
 
     @Override
-    public String toString(){
-        return this.done ? "[X] " + this.task : "[ ] " + this.task;
+    public String toString() {
+        return type.getMarker() + (this.done ? "[X] " : "[ ] ") + this.task;
     }
 }
+
+
