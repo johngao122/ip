@@ -1,4 +1,4 @@
-public enum TaskType {
+enum TaskType {
     TODO("[T]"),
     DEADLINE("[D]"),
     EVENT("[E]");
@@ -9,7 +9,7 @@ public enum TaskType {
         this.marker = marker;
     }
 
-    public String getMarker() {
+    String getMarker() {
         return marker;
     }
 }

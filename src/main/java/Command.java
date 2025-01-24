@@ -1,4 +1,4 @@
-public enum Command {
+enum Command {
     BYE("bye"),
     LIST("list"),
     MARK("mark"),
@@ -14,7 +14,7 @@ public enum Command {
         this.commandText = commandText;
     }
 
-    public static Command fromString(String text) throws QuipException {
+    static Command fromString(String text) throws QuipException {
         for (Command command : Command.values()) {
             if (command.getCommandText().equalsIgnoreCase(text)) {
                 return command;
@@ -23,7 +23,7 @@ public enum Command {
         throw new QuipException("I'm sorry, I don't understand that command.");
     }
 
-    public String getCommandText() {
+    String getCommandText() {
         return commandText;
     }
 }

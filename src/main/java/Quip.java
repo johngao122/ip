@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class Quip {
+class Quip {
     private static final String NAME = "Quip";
     private static final String LINE = "____________________________________________________________";
     private static List<Task> tasks = new ArrayList<>();
@@ -127,32 +127,32 @@ public class Quip {
                 Command command = Command.fromString(commandParts[0]);
 
                 switch (command) {
-                    case BYE:
-                        exit();
-                        return;
-                    case LIST:
-                        listTasks();
-                        break;
-                    case MARK:
-                        markTask(Integer.parseInt(commandParts[1]));
-                        break;
-                    case UNMARK:
-                        unmarkTask(Integer.parseInt(commandParts[1]));
-                        break;
-                    case TODO:
-                        addTodoTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
-                        break;
-                    case DEADLINE:
-                        addDeadlineTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
-                        break;
-                    case EVENT:
-                        addEventTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
-                        break;
-                    case DELETE:
-                        deleteTask(Integer.parseInt(commandParts[1]));
-                        break;
-                    default:
-                        throw new QuipException("I’m sorry, I don’t know what that means.");
+                case BYE:
+                    exit();
+                    return;
+                case LIST:
+                    listTasks();
+                    break;
+                case MARK:
+                    markTask(Integer.parseInt(commandParts[1]));
+                    break;
+                case UNMARK:
+                    unmarkTask(Integer.parseInt(commandParts[1]));
+                    break;
+                case TODO:
+                    addTodoTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
+                    break;
+                case DEADLINE:
+                    addDeadlineTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
+                    break;
+                case EVENT:
+                    addEventTask(String.join(" ", Arrays.copyOfRange(commandParts, 1, commandParts.length)));
+                    break;
+                case DELETE:
+                    deleteTask(Integer.parseInt(commandParts[1]));
+                    break;
+                default:
+                    throw new QuipException("I’m sorry, I don’t know what that means.");
                 }
             } catch (QuipException e) {
                 System.out.println(LINE);
