@@ -30,6 +30,7 @@ public class Parser {
             case "deadline" -> new AddDeadlineCommand(args);
             case "event" -> new AddEventCommand(args);
             case "on" -> new ListDateCommand(args);
+            case "find" -> new FindCommand(args);
             default -> throw new QuipException("I'm sorry, I don't understand that command.");
         };
     }
