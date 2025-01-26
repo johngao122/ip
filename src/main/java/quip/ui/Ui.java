@@ -38,6 +38,19 @@ public class Ui {
         showLine();
     }
 
+    public void showMatchingTasks(List<Task> tasks) {
+        showLine();
+        if (tasks.isEmpty()) {
+            System.out.println("No matching tasks found.");
+        } else {
+            System.out.println("Here are the matching tasks in your list:");
+            for (int i = 0; i < tasks.size(); i++) {
+                System.out.println((i + 1) + ". " + tasks.get(i));
+            }
+        }
+        showLine();
+    }
+
     public void showTaskList(List<Task> tasks) {
         if (tasks.isEmpty()) {
             showLine();
