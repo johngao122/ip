@@ -9,6 +9,11 @@ import quip.ui.Ui;
 
 import java.util.Scanner;
 
+/**
+ * Main class for the Quip task management application.
+ * Handles initialization of core components and the main program loop.
+ */
+
 public class Quip {
     private final Storage storage;
     private final TaskList tasks;

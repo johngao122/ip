@@ -25,6 +25,7 @@ public class Ui {
         System.out.println(LINE);
     }
 
+
     public void showLoadingError() {
         showLine();
         System.out.println("Oops! couldn't load your tasks.");
