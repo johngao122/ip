@@ -1,10 +1,19 @@
+package quip.storage;
+
+
+import quip.exception.QuipException;
+import quip.task.Deadline;
+import quip.task.Event;
+import quip.task.Task;
+import quip.task.Todo;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-class Storage {
+public class Storage {
     private static final String DELIMITER = ",";
     private final Path PATH;
     private final Path FILE_NAME;

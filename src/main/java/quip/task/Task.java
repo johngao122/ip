@@ -1,4 +1,6 @@
-class Task {
+package quip.task;
+
+public class Task {
     private final String task;
     private final TaskType type;
     private boolean isDone;

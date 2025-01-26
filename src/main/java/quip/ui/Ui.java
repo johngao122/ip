@@ -1,6 +1,10 @@
+package quip.ui;
+
+import quip.task.Task;
+
 import java.util.List;
 
-class Ui {
+public class Ui {
     private static final String LINE = "____________________________________________________________";
     private static final String NAME = "Quip";
 

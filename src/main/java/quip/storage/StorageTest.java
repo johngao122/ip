@@ -1,6 +1,13 @@
+package quip.storage;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import quip.exception.QuipException;
+import quip.task.Deadline;
+import quip.task.Event;
+import quip.task.Task;
+import quip.task.Todo;
 
 import java.io.IOException;
 import java.nio.file.Files;

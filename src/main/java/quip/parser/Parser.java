@@ -1,4 +1,9 @@
-class Parser {
+package quip.parser;
+
+import quip.command.*;
+import quip.exception.QuipException;
+
+public class Parser {
     public static Command parse(String input) throws QuipException {
         String[] parts = input.trim().split(" ", 2);
         String commandType = parts[0];

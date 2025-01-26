@@ -1,8 +1,12 @@
+package quip.task;
+
+import quip.exception.QuipException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-class Event extends Task {
+public class Event extends Task {
     private static final DateTimeFormatter DISPLAY_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd h:mm a");
     private static final DateTimeFormatter STORAGE_FORMATTER =
