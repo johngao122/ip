@@ -1,3 +1,7 @@
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +13,8 @@ class Quip {
     private static List<Task> tasks = new ArrayList<>();
     private static Storage storage;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws QuipException {
+        initialize();
         greet();
         processCommands();
     }
@@ -18,6 +23,7 @@ class Quip {
         try {
             storage = new Storage();
             tasks = storage.load();
+            
         } catch (QuipException e) {
             System.out.println(LINE);
             System.out.println("Oops! couldn't load your tasks: " + e.getMessage());
@@ -26,7 +32,7 @@ class Quip {
         }
     }
 
-    private static void greet() {
+    private static void greet() throws QuipException {
         String logo = "________        .__        \n" +
                 "\\_____  \\  __ __|__|_____  \n" +
                 " /  / \\  \\|  |  \\  \\____ \\ \n" +
@@ -37,6 +43,8 @@ class Quip {
         System.out.println("Hi there mortal! I'm " + NAME + "!");
         System.out.println("What shenanigans can I help you with today?");
         System.out.println(LINE);
+
+        listTasksOnDate(LocalDate.now().toString());
     }
 
     private static void exit() {
@@ -142,6 +150,38 @@ class Quip {
         System.out.println(LINE);
     }
 
+    private static void listTasksOnDate(String dateStr) throws QuipException {
+        try {
+            LocalDate date = LocalDate.parse(dateStr);
+            System.out.println(LINE);
+            System.out.println("Here are the tasks for " + date + ":");
+
+            boolean found = false;
+            for (int i = 0; i < tasks.size(); i++) {
+                Task task = tasks.get(i);
+                LocalDate taskDate = null;
+                if (task instanceof Deadline) {
+                    taskDate = LocalDateTime.parse(((Deadline) task).getDeadline(),
+                            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toLocalDate();
+                } else if (task instanceof Event) {
+                    taskDate = LocalDateTime.parse(((Event) task).getFrom(),
+                            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toLocalDate();
+                }
+
+                if (taskDate != null && taskDate.equals(date)) {
+                    System.out.println((i + 1) + ". " + task);
+                    found = true;
+                }
+            }
+            if (!found) {
+                System.out.println("No tasks found for " + date);
+            }
+            System.out.println(LINE);
+        } catch (DateTimeException e) {
+            throw new QuipException("Please use this format: yyyy-MM-dd");
+        }
+    }
+
     private static void processCommands() {
         Scanner sc = new Scanner(System.in);
         while (true) {
@@ -174,6 +214,12 @@ class Quip {
                     break;
                 case DELETE:
                     deleteTask(Integer.parseInt(commandParts[1]));
+                    break;
+                case ON_DATE:
+                    if (commandParts.length < 2) {
+                        throw new QuipException("Please specify a date.");
+                    }
+                    listTasksOnDate(commandParts[1]);
                     break;
                 default:
                     throw new QuipException("I’m sorry, I don’t know what that means.");
