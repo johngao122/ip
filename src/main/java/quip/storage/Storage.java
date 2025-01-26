@@ -15,17 +15,17 @@ import java.util.List;
 
 public class Storage {
     private static final String DELIMITER = ",";
-    private final Path PATH;
+    private final Path FILE_PATH;
     private final Path FILE_NAME;
 
     public Storage() {
-        this.PATH = Path.of("tasks");
-        this.FILE_NAME = PATH.resolve("tasks.csv");
+        this.FILE_PATH = Path.of("tasks");
+        this.FILE_NAME = FILE_PATH.resolve("tasks.csv");
     }
 
     public Storage(Path path) {
-        this.PATH = path;
-        this.FILE_NAME = PATH.resolve("tasks.csv");
+        this.FILE_PATH = path;
+        this.FILE_NAME = FILE_PATH.resolve("tasks.csv");
     }
 
     public List<Task> load() throws QuipException {
@@ -65,8 +65,8 @@ public class Storage {
 
     private void createDirectoryIfMissing() throws QuipException {
         try {
-            if (!Files.exists(PATH)) {
-                Files.createDirectory(PATH);
+            if (!Files.exists(FILE_PATH)) {
+                Files.createDirectory(FILE_PATH);
             }
         } catch (Exception e) {
             throw new QuipException("Unable to create directory");
