@@ -4,10 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import quip.exception.QuipException;
-import quip.task.Deadline;
-import quip.task.Event;
-import quip.task.Task;
-import quip.task.Todo;
+import quip.task.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,8 +14,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class StorageTest {
-    private static final Path TEST_PATH = Path.of("test");
+class StorageTest {
+    private static final Path TEST_PATH = Path.of("test-storage");
     private static final Path TEST_FILE = TEST_PATH.resolve("tasks.csv");
     private Storage storage;
 
@@ -33,7 +30,6 @@ public class StorageTest {
         cleanTestFiles();
     }
 
-
     private void cleanTestFiles() {
         try {
             Files.deleteIfExists(TEST_FILE);
@@ -44,32 +40,50 @@ public class StorageTest {
     }
 
     @Test
-    void loadEmptyFile_returnsEmptyList() throws QuipException {
+    void load_newStorage_returnsEmptyList() throws QuipException {
         List<Task> tasks = storage.load();
         assertTrue(tasks.isEmpty());
     }
 
     @Test
-    void saveAndLoadTasks_returnsSameTasks() throws QuipException {
-        List<Task> tasks = Arrays.asList(
-                new Todo("Read book"),
-                new Deadline("Return book", "June 6th"),
-                new Event("Meeting", "2023-11-20 00:00", "2023-11-20 12:00")
-        );
+    void save_multipleTaskTypes_savesCorrectly() throws QuipException {
+        Todo todo = new Todo("Read book");
+        Deadline deadline = new Deadline("Submit report", "2024-01-28 14:00");
+        Event event = new Event("Meeting", "2024-01-28 14:00", "2024-01-28 15:00");
+        List<Task> tasks = Arrays.asList(todo, deadline, event);
 
         storage.save(tasks);
         List<Task> loadedTasks = storage.load();
 
-        assertEquals(tasks.size(), loadedTasks.size());
-        for (int i = 0; i < tasks.size(); i++) {
-            assertEquals(tasks.get(i).toString(), loadedTasks.get(i).toString());
-        }
+        assertEquals(3, loadedTasks.size());
+        assertEquals(todo.toString(), loadedTasks.get(0).toString());
+        assertEquals(deadline.toString(), loadedTasks.get(1).toString());
+        assertEquals(event.toString(), loadedTasks.get(2).toString());
     }
 
     @Test
-    void loadCorruptedFile_throwsException() throws IOException {
+    void save_markedTasks_preservesStatus() throws QuipException {
+        Todo todo = new Todo("Read book");
+        todo.markAsDone();
+
+        storage.save(List.of(todo));
+        List<Task> loadedTasks = storage.load();
+
+        assertTrue(loadedTasks.get(0).isDone());
+    }
+
+    @Test
+    void load_invalidFormat_throwsException() throws IOException {
         Files.createDirectories(TEST_PATH);
         Files.write(TEST_FILE, List.of("Invalid,line"));
+
+        assertThrows(QuipException.class, () -> storage.load());
+    }
+
+    @Test
+    void load_invalidTaskType_throwsException() throws IOException {
+        Files.createDirectories(TEST_PATH);
+        Files.write(TEST_FILE, List.of("X,false,Invalid task"));
 
         assertThrows(QuipException.class, () -> storage.load());
     }
