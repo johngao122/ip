@@ -9,6 +9,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Manages a collection of tasks and provides operations to manipulate them.
+ * Supports adding, deleting, marking, and filtering tasks.
+ */
+
 public class TaskList {
     private List<Task> tasks;
 
@@ -20,29 +25,65 @@ public class TaskList {
         this.tasks = tasks;
     }
 
+    /**
+     * Adds a new task to the list.
+     * @param task The task to be added
+     */
+
     public void addTask(Task task) {
         tasks.add(task);
     }
+
+    /**
+     * Deletes a task at the specified index.
+     * @param index Zero-based index of the task to delete
+     * @return The deleted task
+     * @throws QuipException if the index is invalid
+     */
 
     public Task deleteTask(int index) throws QuipException {
         validateIndex(index);
         return tasks.remove(index);
     }
 
+    /**
+     * Marks a task at the specified index as done.
+     * @param index Zero-based index of the task to mark
+     * @throws QuipException if the index is invalid
+     */
     public void markTask(int index) throws QuipException {
         validateIndex(index);
         tasks.get(index).markAsDone();
     }
 
+    /**
+     * Unmarks a task at the specified index.
+     *
+     * @param index Zero-based index of the task to unmark
+     * @throws QuipException if the index is invalid
+     */
     public void unmarkTask(int index) throws QuipException {
         validateIndex(index);
         tasks.get(index).markAsUndone();
     }
 
+    /**
+     * Retrieves a task at the specified index.
+     * @param index Zero-based index of the task
+     * @return The task at the specified index
+     * @throws QuipException if the index is invalid
+     */
     public Task getTask(int index) throws QuipException {
         validateIndex(index);
         return tasks.get(index);
     }
+
+    /**
+     * Retrieves tasks scheduled for a specific date.
+     * @param dateStr Date in yyyy-MM-dd format
+     * @return List of tasks scheduled for the specified date
+     * @throws QuipException if the date format is invalid
+     */
 
     public List<Task> getTasksOnDate(String dateStr) throws QuipException {
         try {
@@ -65,12 +106,21 @@ public class TaskList {
         }
     }
 
+    /**
+     * Validates the index of a task.
+     * @param index Zero-based index of the task
+     * @throws QuipException if the index is invalid
+     */
     private void validateIndex(int index) throws QuipException {
         if (index < 0 || index >= tasks.size()) {
             throw new QuipException("Invalid task number. Please try again.");
         }
     }
 
+    /**
+     * Retrieves all tasks in the list.
+     * @return List of tasks
+     */
     public List<Task> getTasks() {
         return new ArrayList<>(tasks);
     }

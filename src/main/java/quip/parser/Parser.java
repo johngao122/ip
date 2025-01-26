@@ -3,7 +3,18 @@ package quip.parser;
 import quip.command.*;
 import quip.exception.QuipException;
 
+/**
+ * Parser for command-line input in the Quip application.
+ * Converts user input strings into executable Command objects.
+ */
+
 public class Parser {
+    /**
+     * Parses a user input string into a Command object.
+     * @param input The raw input string from the user
+     * @return A Command object representing the parsed input
+     * @throws QuipException if the input format is invalid or unrecognized
+     */
     public static Command parse(String input) throws QuipException {
         String[] parts = input.trim().split(" ", 2);
         String commandType = parts[0];
