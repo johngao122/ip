@@ -1,3 +1,12 @@
+package quip;
+
+import quip.command.Command;
+import quip.exception.QuipException;
+import quip.parser.Parser;
+import quip.storage.Storage;
+import quip.task.TaskList;
+import quip.ui.Ui;
+
 import java.util.Scanner;
 
 public class Quip {

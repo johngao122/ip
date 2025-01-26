@@ -1,4 +1,12 @@
-class ListDateCommand extends Command {
+package quip.command;
+
+
+import quip.exception.QuipException;
+import quip.storage.Storage;
+import quip.task.TaskList;
+import quip.ui.Ui;
+
+public class ListDateCommand extends Command {
     private final String date;
 
     public ListDateCommand(String date) throws QuipException {
@@ -9,7 +17,7 @@ class ListDateCommand extends Command {
     }
 
     @Override
-    void execute(TaskList tasks, Ui ui, Storage storage) throws QuipException {
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws QuipException {
         ui.showTasksOnDate(tasks.getTasksOnDate(date));
     }
 }
