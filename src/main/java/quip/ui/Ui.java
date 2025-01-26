@@ -5,7 +5,7 @@ import quip.task.Task;
 import java.util.List;
 
 public class Ui {
-    private static final String LINE = "____________________________________________________________";
+    private static final String LINE = "_____________________________________________________________";
     private static final String NAME = "Quip";
 
     public void showWelcome() {
