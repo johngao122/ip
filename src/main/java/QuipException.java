@@ -1,5 +1,5 @@
 class QuipException extends Exception {
-    QuipException(String message) {
+    public QuipException(String message) {
         super(message);
     }
 }

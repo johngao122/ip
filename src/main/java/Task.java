@@ -3,23 +3,32 @@ class Task {
     private final TaskType type;
     private boolean isDone;
 
-    Task(String task, TaskType type) {
+    public Task(String task, TaskType type) {
         this.task = task;
         this.type = type;
         this.isDone = false;
     }
 
 
-    void markAsDone() {
+    public void markAsDone() {
         this.isDone = true;
     }
 
-    void markAsUndone() {
+    public void markAsUndone() {
         this.isDone = false;
     }
 
-    boolean isDone() {
+
+    public boolean isDone() {
         return this.isDone;
+    }
+
+    public String getType() {
+        return this.type.getMarker();
+    }
+
+    public String getTask() {
+        return this.task;
     }
 
 
