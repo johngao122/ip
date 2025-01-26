@@ -10,6 +10,7 @@ class Quip {
     private static Storage storage;
 
     public static void main(String[] args) {
+        initialize();
         greet();
         processCommands();
     }
