@@ -7,6 +7,24 @@ class Quip {
     private static final String NAME = "Quip";
     private static final String LINE = "____________________________________________________________";
     private static List<Task> tasks = new ArrayList<>();
+    private static Storage storage;
+
+    public static void main(String[] args) {
+        greet();
+        processCommands();
+    }
+
+    private static void initialize() {
+        try {
+            storage = new Storage();
+            tasks = storage.load();
+        } catch (QuipException e) {
+            System.out.println(LINE);
+            System.out.println("Oops! couldn't load your tasks: " + e.getMessage());
+            System.out.println("Starting with an empty list.");
+            System.out.println(LINE);
+        }
+    }
 
     private static void greet() {
         String logo = "________        .__        \n" +
@@ -33,6 +51,7 @@ class Quip {
         }
         Todo todo = new Todo(name);
         tasks.add(todo);
+        saveChanges();
         System.out.println(LINE);
         System.out.println("I’ve added this little nugget to your to-do list:");
         System.out.println(todo);
@@ -47,6 +66,7 @@ class Quip {
         }
         Deadline deadline = new Deadline(deadlineParts[0], deadlineParts[1]);
         tasks.add(deadline);
+        saveChanges();
         System.out.println(LINE);
         System.out.println("Deadline? Challenge accepted! I’ve added this:");
         System.out.println(deadline);
@@ -62,6 +82,7 @@ class Quip {
         String[] eventTime = eventParts[1].split(" /to ", 2);
         Event event = new Event(eventParts[0], eventTime[0], eventTime[1]);
         tasks.add(event);
+        saveChanges();
         System.out.println(LINE);
         System.out.println("Event scheduled! Here's the scoop:");
         System.out.println(event);
@@ -90,6 +111,7 @@ class Quip {
             throw new QuipException("Invalid task number. Please try again.");
         }
         tasks.get(taskToMark - 1).markAsDone();
+        saveChanges();
         System.out.println(LINE);
         System.out.println("Another one bites the dust: " + tasks.get(taskToMark - 1));
         System.out.println(LINE);
@@ -100,6 +122,7 @@ class Quip {
             throw new QuipException("Invalid task number. Please try again.");
         }
         tasks.get(taskToUnmark - 1).markAsUndone();
+        saveChanges();
         System.out.println(LINE);
         System.out.println("Let’s pretend that task wasn’t done yet:");
         System.out.println(tasks.get(taskToUnmark - 1));
@@ -111,6 +134,7 @@ class Quip {
             throw new QuipException("Invalid task number. Please try again.");
         }
         Task task = tasks.remove(taskToDelete - 1);
+        saveChanges();
         System.out.println(LINE);
         System.out.println("That task has vanished faster than your weekend plans. It’s gone, mortal!");
         System.out.println(task);
@@ -162,8 +186,15 @@ class Quip {
         }
     }
 
-    public static void main(String[] args) {
-        greet();
-        processCommands();
+    private static void saveChanges() {
+        try {
+            storage.save(tasks);
+        } catch (QuipException e) {
+            System.out.println(LINE);
+            System.out.println("Oops! couldn't save your tasks: " + e.getMessage());
+            System.out.println(LINE);
+        }
     }
+
+
 }

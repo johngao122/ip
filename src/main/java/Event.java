@@ -2,10 +2,18 @@ class Event extends Task {
     private final String from;
     private final String to;
 
-    Event(String task, String from, String to) {
+    public Event(String task, String from, String to) {
         super(task, TaskType.EVENT);
         this.from = from;
         this.to = to;
+    }
+
+    public String getFrom() {
+        return this.from;
+    }
+
+    public String getTo() {
+        return this.to;
     }
 
     @Override
