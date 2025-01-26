@@ -6,7 +6,8 @@ enum Command {
     TODO("todo"),
     DEADLINE("deadline"),
     EVENT("event"),
-    DELETE("delete");
+    DELETE("delete"),
+    ON_DATE("on");
 
     private final String commandText;
 

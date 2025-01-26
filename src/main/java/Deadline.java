@@ -3,11 +3,11 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 class Deadline extends Task {
-    private final LocalDateTime deadline;
-    private final DateTimeFormatter DISPLAY_FORMATTER =
+    private static final DateTimeFormatter DISPLAY_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd h:mm a");
-    private final DateTimeFormatter FILE_FORMATTER =
+    private static final DateTimeFormatter FILE_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private final LocalDateTime deadline;
 
     public Deadline(String task, String deadline) throws QuipException {
         super(task, TaskType.DEADLINE);
