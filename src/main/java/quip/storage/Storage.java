@@ -15,17 +15,17 @@ import java.util.List;
 
 public class Storage {
     private static final String DELIMITER = ",";
-    private final Path FILE_PATH;
-    private final Path FILE_NAME;
+    private final Path filePath;
+    private final Path fileName;
 
     public Storage() {
-        this.FILE_PATH = Path.of("tasks");
-        this.FILE_NAME = FILE_PATH.resolve("tasks.csv");
+        this.filePath = Path.of("tasks");
+        this.fileName = filePath.resolve("tasks.csv");
     }
 
     public Storage(Path path) {
-        this.FILE_PATH = path;
-        this.FILE_NAME = FILE_PATH.resolve("tasks.csv");
+        this.filePath = path;
+        this.fileName = filePath.resolve("tasks.csv");
     }
 
     public List<Task> load() throws QuipException {
@@ -33,12 +33,12 @@ public class Storage {
         List<Task> tasks = new ArrayList<>();
 
         try {
-            if (!Files.exists(FILE_NAME)) {
-                Files.createFile(FILE_NAME);
+            if (!Files.exists(fileName)) {
+                Files.createFile(fileName);
                 return tasks;
             }
 
-            List<String> lines = Files.readAllLines(FILE_NAME);
+            List<String> lines = Files.readAllLines(fileName);
             for (String line : lines) {
                 tasks.add(createTaskFromLine(line));
             }
@@ -57,7 +57,7 @@ public class Storage {
                 lines.add(createLineFromTask(task));
             }
 
-            Files.write(FILE_NAME, lines);
+            Files.write(fileName, lines);
         } catch (IOException e) {
             throw new QuipException("Unable to write file");
         }
@@ -65,8 +65,8 @@ public class Storage {
 
     private void createDirectoryIfMissing() throws QuipException {
         try {
-            if (!Files.exists(FILE_PATH)) {
-                Files.createDirectory(FILE_PATH);
+            if (!Files.exists(filePath)) {
+                Files.createDirectory(filePath);
             }
         } catch (Exception e) {
             throw new QuipException("Unable to create directory");
