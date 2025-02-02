@@ -32,6 +32,18 @@ public class Quip {
         tasks = tempTasks;
     }
 
+    public Storage getStorage() {
+        return storage;
+    }
+
+    public TaskList getTasks() {
+        return tasks;
+    }
+
+    public Ui getUi() {
+        return ui;
+    }
+
     public static void main(String[] args) {
         new Quip().run();
     }
