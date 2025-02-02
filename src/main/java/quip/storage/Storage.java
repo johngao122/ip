@@ -1,6 +1,5 @@
 package quip.storage;
 
-
 import quip.exception.QuipException;
 import quip.task.Deadline;
 import quip.task.Event;
@@ -13,32 +12,49 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Handles the moving of tasks to and from storage.
+ */
 public class Storage {
     private static final String DELIMITER = ",";
-    private final Path FILE_PATH;
-    private final Path FILE_NAME;
+    private final Path filePath;
+    private final Path fileName;
 
+    /**
+     * Creates a Storage instance with default file location.
+     */
     public Storage() {
-        this.FILE_PATH = Path.of("tasks");
-        this.FILE_NAME = FILE_PATH.resolve("tasks.csv");
+        this.filePath = Path.of("tasks");
+        this.fileName = filePath.resolve("tasks.csv");
     }
 
+    /**
+     * Creates a Storage instance with specified file location.
+     *
+     * @param path The directory path for storing tasks
+     */
     public Storage(Path path) {
-        this.FILE_PATH = path;
-        this.FILE_NAME = FILE_PATH.resolve("tasks.csv");
+        this.filePath = path;
+        this.fileName = filePath.resolve("tasks.csv");
     }
 
+    /**
+     * Loads tasks from storage.
+     *
+     * @return List of tasks loaded from storage
+     * @throws QuipException if there's an error reading from storage
+     */
     public List<Task> load() throws QuipException {
         createDirectoryIfMissing();
         List<Task> tasks = new ArrayList<>();
 
         try {
-            if (!Files.exists(FILE_NAME)) {
-                Files.createFile(FILE_NAME);
+            if (!Files.exists(fileName)) {
+                Files.createFile(fileName);
                 return tasks;
             }
 
-            List<String> lines = Files.readAllLines(FILE_NAME);
+            List<String> lines = Files.readAllLines(fileName);
             for (String line : lines) {
                 tasks.add(createTaskFromLine(line));
             }
@@ -48,6 +64,12 @@ public class Storage {
         }
     }
 
+    /**
+     * Saves tasks to storage.
+     *
+     * @param tasks List of tasks to save
+     * @throws QuipException if there's an error writing to storage
+     */
     public void save(List<Task> tasks) throws QuipException {
         try {
             createDirectoryIfMissing();
@@ -57,7 +79,7 @@ public class Storage {
                 lines.add(createLineFromTask(task));
             }
 
-            Files.write(FILE_NAME, lines);
+            Files.write(fileName, lines);
         } catch (IOException e) {
             throw new QuipException("Unable to write file");
         }
@@ -65,8 +87,8 @@ public class Storage {
 
     private void createDirectoryIfMissing() throws QuipException {
         try {
-            if (!Files.exists(FILE_PATH)) {
-                Files.createDirectory(FILE_PATH);
+            if (!Files.exists(filePath)) {
+                Files.createDirectory(filePath);
             }
         } catch (Exception e) {
             throw new QuipException("Unable to create directory");

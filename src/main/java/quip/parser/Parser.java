@@ -1,14 +1,31 @@
 package quip.parser;
 
-import quip.command.*;
+import quip.command.AddDeadlineCommand;
+import quip.command.AddEventCommand;
+import quip.command.AddTodoCommand;
+import quip.command.Command;
+import quip.command.DeleteCommand;
+import quip.command.ExitCommand;
+import quip.command.FindCommand;
+import quip.command.ListCommand;
+import quip.command.ListDateCommand;
+import quip.command.MarkCommand;
+import quip.command.UnmarkCommand;
 import quip.exception.QuipException;
 
 /**
  * Parser for command-line input in the Quip application.
  * Converts user input strings into executable Command objects.
  */
+public final class Parser {
 
-public class Parser {
+    /**
+     * Private constructor to prevent instantiation of utility class.
+     */
+    private Parser() {
+        throw new AssertionError("Utility class should not be instantiated");
+    }
+
     /**
      * Parses a user input string into a Command object.
      * @param input The raw input string from the user
@@ -27,8 +44,18 @@ public class Parser {
             case "mark" -> new MarkCommand(parseIndex(args));
             case "unmark" -> new UnmarkCommand(parseIndex(args));
             case "todo" -> new AddTodoCommand(args);
-            case "deadline" -> new AddDeadlineCommand(args);
-            case "event" -> new AddEventCommand(args);
+            case "deadline" -> {
+                if (!args.contains("/by")) {
+                    throw new QuipException("Invalid deadline format. Use: <description> /by <time>");
+                }
+                yield new AddDeadlineCommand(args);
+            }
+            case "event" -> {
+                if (!args.contains("/from") || !args.contains("/to")) {
+                    throw new QuipException("Invalid event format. Use: <description> /from <start> /to <end>");
+                }
+                yield new AddEventCommand(args);
+            }
             case "on" -> new ListDateCommand(args);
             case "find" -> new FindCommand(args);
             default -> throw new QuipException("I'm sorry, I don't understand that command.");
