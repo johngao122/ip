@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -32,6 +33,14 @@ public class TaskList {
 
     public void addTask(Task task) {
         tasks.add(task);
+    }
+
+    /**
+     * Adds multiple tasks to the list at once.
+     * @param tasksToAdd Variable number of tasks to be added
+     */
+    public void addTasks(Task... tasksToAdd) {
+        Collections.addAll(tasks, tasksToAdd);
     }
 
     /**
