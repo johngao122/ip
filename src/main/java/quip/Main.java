@@ -13,8 +13,12 @@ import javafx.stage.Stage;
 import quip.command.Command;
 import quip.exception.QuipException;
 import quip.parser.Parser;
-import quip.ui.QuipDialogBox;
+import quip.storage.Storage;
+import quip.task.TaskList;
+import quip.ui.JavaFxUi;
 import quip.ui.UserDialogBox;
+
+import java.util.Objects;
 
 /**
  * Main application class for the Quip chat interface.
@@ -24,13 +28,18 @@ public class Main extends Application {
     private VBox dialogContainer;
     private TextField userInput;
     private ScrollPane scrollPane;
-    private Quip quip;
+    private TaskList tasks;
+    private Storage storage;
+    private JavaFxUi ui;
 
     @Override
     public void start(Stage stage) {
+        initializeComponents();
+        setupLayout(stage);
+        ui.showWelcome();
+    }
 
-        quip = new Quip();
-
+    private void initializeComponents() {
         dialogContainer = new VBox();
         dialogContainer.setPadding(new Insets(10, 10, 10, 10));
         dialogContainer.setSpacing(10);
@@ -42,6 +51,16 @@ public class Main extends Application {
         userInput = new TextField();
         userInput.setOnAction((event) -> handleUserInput());
 
+        storage = new Storage();
+        try {
+            tasks = new TaskList(storage.load());
+        } catch (QuipException e) {
+            tasks = new TaskList();
+        }
+        ui = new JavaFxUi(dialogContainer);
+    }
+
+    private void setupLayout(Stage stage) {
         HBox inputArea = new HBox();
         inputArea.setAlignment(Pos.CENTER);
         inputArea.setPadding(new Insets(10));
@@ -53,16 +72,14 @@ public class Main extends Application {
         VBox.setVgrow(scrollPane, javafx.scene.layout.Priority.ALWAYS);
 
         Scene scene = new Scene(mainLayout);
-        scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
-
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/styles.css")).toExternalForm());
         stage.setTitle("Quip Chat");
         stage.setScene(scene);
         stage.setMinWidth(400);
         stage.setMinHeight(600);
         stage.show();
-
-        showWelcomeMessage();
     }
+
 
     /**
      * Handles user input and sends it to Quip for processing.
@@ -70,31 +87,22 @@ public class Main extends Application {
     private void handleUserInput() {
         String input = userInput.getText().trim();
         if (!input.isEmpty()) {
-
             dialogContainer.getChildren().add(new UserDialogBox(input));
             userInput.clear();
 
             try {
                 Command command = Parser.parse(input);
-                command.execute(quip.getTasks(), quip.getUi(), quip.getStorage());
+                command.execute(tasks, ui, storage);
 
-                if(command.isExit()){
+                if (command.isExit()) {
                     Platform.exit();
                 }
             } catch (QuipException e) {
-                dialogContainer.getChildren().add(new QuipDialogBox(e.getMessage()));
+                ui.showError(e.getMessage());
             }
 
             scrollPane.setVvalue(1.0);
         }
     }
 
-    /**
-     * Displays the welcome message when the application starts.
-     */
-    private void showWelcomeMessage() {
-        String welcomeMessage = "Hi there mortal! I'm Quip!\n" +
-                "What shenanigans can I help you with today?";
-        dialogContainer.getChildren().add(new QuipDialogBox(welcomeMessage));
-    }
 }
