@@ -1,9 +1,19 @@
 package quip.parser;
 
 import org.junit.jupiter.api.Test;
-import quip.command.*;
+import quip.command.Command;
+import quip.command.AddDeadlineCommand;
+import quip.command.AddEventCommand;
+import quip.command.AddTodoCommand;
+import quip.command.DeleteCommand;
+import quip.command.ExitCommand;
+import quip.command.ListCommand;
+import quip.command.ListDateCommand;
+import quip.command.MarkCommand;
+import quip.command.UnmarkCommand;
 import quip.exception.QuipException;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ParserTest {
     @Test

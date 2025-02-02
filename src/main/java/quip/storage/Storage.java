@@ -1,6 +1,5 @@
 package quip.storage;
 
-
 import quip.exception.QuipException;
 import quip.task.Deadline;
 import quip.task.Event;
@@ -13,21 +12,38 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Handles the moving of tasks to and from storage.
+ */
 public class Storage {
     private static final String DELIMITER = ",";
     private final Path filePath;
     private final Path fileName;
 
+    /**
+     * Creates a Storage instance with default file location.
+     */
     public Storage() {
         this.filePath = Path.of("tasks");
         this.fileName = filePath.resolve("tasks.csv");
     }
 
+    /**
+     * Creates a Storage instance with specified file location.
+     *
+     * @param path The directory path for storing tasks
+     */
     public Storage(Path path) {
         this.filePath = path;
         this.fileName = filePath.resolve("tasks.csv");
     }
 
+    /**
+     * Loads tasks from storage.
+     *
+     * @return List of tasks loaded from storage
+     * @throws QuipException if there's an error reading from storage
+     */
     public List<Task> load() throws QuipException {
         createDirectoryIfMissing();
         List<Task> tasks = new ArrayList<>();
@@ -48,6 +64,12 @@ public class Storage {
         }
     }
 
+    /**
+     * Saves tasks to storage.
+     *
+     * @param tasks List of tasks to save
+     * @throws QuipException if there's an error writing to storage
+     */
     public void save(List<Task> tasks) throws QuipException {
         try {
             createDirectoryIfMissing();
