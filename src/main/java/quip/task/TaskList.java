@@ -34,9 +34,12 @@ public class TaskList {
      * @param task The task to be added
      */
 
-    public void addTask(Task task) {
+    public void addTask(Task task) throws QuipException {
         assert task != null : "Task cannot be null";
         int sizeBefore = tasks.size();
+        if(hasDuplicate(task)) {
+            throw new QuipException("Task already exists");
+        }
         tasks.add(task);
         assert tasks.size() == sizeBefore + 1 : "Task should be added to the list";
     }
@@ -65,6 +68,7 @@ public class TaskList {
         assert deletedTask != null : "Deleted task should not be null";
         return deletedTask;
     }
+
 
     /**
      * Marks a task at the specified index as done.
@@ -153,6 +157,49 @@ public class TaskList {
             throw new QuipException("Invalid task number. Please try again.");
         }
         assert index >= 0 && index < tasks.size() : "Invalid index";
+    }
+
+    /**
+     * Checks if a task is a duplicate of any existing task.
+     * Two tasks are considered duplicates if they have:
+     * 1. The same task type
+     * 2. The same description
+     * 3. The same deadline/event times (if applicable)
+     *
+     * @param newTask The task to check for duplicates
+     * @return true if a duplicate exists, false otherwise
+     */
+    public boolean hasDuplicate(Task newTask) {
+        return tasks.stream().anyMatch(existingTask -> isDuplicate(existingTask, newTask));
+    }
+
+    /**
+     * Compares two tasks to determine if they are duplicates.
+     *
+     * @param task1 First task to compare
+     * @param task2 Second task to compare
+     * @return true if the tasks are duplicates, false otherwise
+     */
+    private boolean isDuplicate(Task task1, Task task2) {
+
+        if (!task1.getType().equals(task2.getType()) ||
+                !task1.getTask().equals(task2.getTask())) {
+            return false;
+        }
+
+        if (task1 instanceof Deadline && task2 instanceof Deadline) {
+            return ((Deadline) task1).getDeadline()
+                    .equals(((Deadline) task2).getDeadline());
+        }
+
+        if (task1 instanceof Event && task2 instanceof Event) {
+            Event event1 = (Event) task1;
+            Event event2 = (Event) task2;
+            return event1.getFrom().equals(event2.getFrom()) &&
+                    event1.getTo().equals(event2.getTo());
+        }
+
+        return true;
     }
 
     /**
