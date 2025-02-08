@@ -1,0 +1,47 @@
+.dialog-box {
+    -fx-background-radius: 15;
+    -fx-padding: 10;
+}
+
+.quip-dialog-box {
+    -fx-background-color: #f0f0f0;
+}
+
+.quip-dialog-box .label {
+    -fx-text-fill: #2c2c2c;
+    -fx-font-size: 14px;
+    -fx-padding: 8 12;
+    -fx-background-radius: 12;
+}
+
+.user-dialog-box {
+    -fx-background-color: transparent;
+}
+
+.user-dialog-box .label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8 12;
+    -fx-background-radius: 12;
+    -fx-background-color: #0084ff;
+}
+
+.scroll-pane {
+    -fx-background: white;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: white;
+}
+
+.text-field {
+    -fx-background-radius: 20;
+    -fx-padding: 8 15;
+    -fx-font-size: 14;
+}
+
+.dialog-box .image-container {
+    -fx-background-color: #D3D3D3;
+    -fx-background-radius: 30;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);
+}

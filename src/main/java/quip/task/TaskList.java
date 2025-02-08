@@ -20,6 +20,7 @@ public class TaskList {
 
     public TaskList() {
         this.tasks = new ArrayList<>();
+        assert tasks.isEmpty() : "Task list should be empty";
     }
 
     public TaskList(List<Task> tasks) {
@@ -32,7 +33,10 @@ public class TaskList {
      */
 
     public void addTask(Task task) {
+        assert task != null : "Task cannot be null";
+        int sizeBefore = tasks.size();
         tasks.add(task);
+        assert tasks.size() == sizeBefore + 1 : "Task should be added to the list";
     }
 
     /**
@@ -52,7 +56,12 @@ public class TaskList {
 
     public Task deleteTask(int index) throws QuipException {
         validateIndex(index);
-        return tasks.remove(index);
+        assert index >= 0 && index < tasks.size() : "Invalid index";
+        int sizeBefore = tasks.size();
+        Task deletedTask = tasks.remove(index);
+        assert tasks.size() == sizeBefore - 1 : "Task should be deleted from the list";
+        assert deletedTask != null : "Deleted task should not be null";
+        return deletedTask;
     }
 
     /**
@@ -124,6 +133,7 @@ public class TaskList {
         if (index < 0 || index >= tasks.size()) {
             throw new QuipException("Invalid task number. Please try again.");
         }
+        assert index >= 0 && index < tasks.size() : "Invalid index";
     }
 
     /**

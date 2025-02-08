@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.45.1">
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/test/java/quip/parser/ParserTest.java">
+<error line="10" column="8" severity="warning" message="Unused import - quip.command.FindCommand." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="21" column="10" severity="warning" message="Name &apos;parse_todoCommand_returnsAddTodoCommand&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="27" column="10" severity="warning" message="Name &apos;parse_emptyTodoCommand_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="32" column="10" severity="warning" message="Name &apos;parse_deadlineCommand_returnsAddDeadlineCommand&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="38" column="10" severity="warning" message="Name &apos;parse_invalidDeadlineFormat_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="43" column="10" severity="warning" message="Name &apos;parse_eventCommand_returnsAddEventCommand&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="49" column="10" severity="warning" message="Name &apos;parse_invalidEventFormat_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="54" column="10" severity="warning" message="Name &apos;parse_listCommand_returnsListCommand&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="60" column="10" severity="warning" message="Name &apos;parse_listDateCommand_returnsListDateCommand&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="66" column="10" severity="warning" message="Name &apos;parse_deleteCommand_returnsDeleteCommand&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="72" column="10" severity="warning" message="Name &apos;parse_invalidDeleteIndex_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="77" column="10" severity="warning" message="Name &apos;parse_markCommand_returnsMarkCommand&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="83" column="10" severity="warning" message="Name &apos;parse_unmarkCommand_returnsUnmarkCommand&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="89" column="10" severity="warning" message="Name &apos;parse_exitCommand_returnsExitCommand&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="95" column="10" severity="warning" message="Name &apos;parse_invalidCommand_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/test/java/quip/storage/StorageTest.java">
+<error line="49" column="10" severity="warning" message="Name &apos;load_newStorage_returnsEmptyList&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="55" column="10" severity="warning" message="Name &apos;save_multipleTaskTypes_savesCorrectly&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="71" column="10" severity="warning" message="Name &apos;save_markedTasks_preservesStatus&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="82" column="10" severity="warning" message="Name &apos;load_invalidFormat_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="90" column="10" severity="warning" message="Name &apos;load_invalidTaskType_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/test/java/quip/task/TaskTest.java">
+<error line="24" column="10" severity="warning" message="Name &apos;markAsDone_unmarkedTask_marksCorrectly&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="30" column="10" severity="warning" message="Name &apos;markAsUndone_markedTask_unmarksCorrectly&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="37" column="10" severity="warning" message="Name &apos;toString_formatsCorrectly&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="46" column="10" severity="warning" message="Name &apos;constructor_validDateTime_createsDeadline&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="53" column="10" severity="warning" message="Name &apos;constructor_invalidDateTime_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="58" column="10" severity="warning" message="Name &apos;getDeadline_returnsCorrectFormat&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="66" column="10" severity="warning" message="Name &apos;constructor_validDateTime_createsEvent&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="73" column="10" severity="warning" message="Name &apos;constructor_endBeforeStart_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="79" column="10" severity="warning" message="Name &apos;getFromAndTo_returnsCorrectFormat&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="95" column="10" severity="warning" message="Name &apos;addTask_validTask_addsSuccessfully&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="102" column="10" severity="warning" message="Name &apos;deleteTask_validIndex_removesTask&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="111" column="10" severity="warning" message="Name &apos;markTask_validIndex_marksTask&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="118" column="10" severity="warning" message="Name &apos;getTasksOnDate_matchingDate_returnsCorrectTasks&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="132" column="10" severity="warning" message="Name &apos;getTasksOnDate_invalidFormat_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/test/java/quip/command/CommandTest.java">
+<error line="32" column="10" severity="warning" message="Name &apos;execute_validTodo_addsTodoTask&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="41" column="10" severity="warning" message="Name &apos;constructor_emptyDescription_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="59" column="10" severity="warning" message="Name &apos;execute_validDeadline_addsDeadlineTask&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="68" column="10" severity="warning" message="Name &apos;execute_invalidFormat_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="87" column="10" severity="warning" message="Name &apos;execute_validEvent_addsEventTask&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="97" column="10" severity="warning" message="Name &apos;execute_invalidFormat_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="119" column="10" severity="warning" message="Name &apos;execute_validIndex_deletesTask&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="126" column="10" severity="warning" message="Name &apos;execute_invalidIndex_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="134" column="10" severity="warning" message="Name &apos;isExit_returnsTrue&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="154" column="10" severity="warning" message="Name &apos;execute_withTasks_showsList&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="175" column="10" severity="warning" message="Name &apos;execute_validIndex_marksTask&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="182" column="10" severity="warning" message="Name &apos;execute_invalidIndex_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="204" column="10" severity="warning" message="Name &apos;execute_validIndex_unmarksTask&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="211" column="10" severity="warning" message="Name &apos;execute_invalidIndex_throwsException&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+</file>
+</checkstyle>

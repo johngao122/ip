@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="quip.task.TaskTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-02-02T07:08:14" hostname="Johns-MacBook-Pro-3.local" time="0.001">
+  <properties/>
+  <testcase name="markAsDone_unmarkedTask_marksCorrectly()" classname="quip.task.TaskTest" time="0.001"/>
+  <testcase name="markAsUndone_markedTask_unmarksCorrectly()" classname="quip.task.TaskTest" time="0.0"/>
+  <testcase name="toString_formatsCorrectly()" classname="quip.task.TaskTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
