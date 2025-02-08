@@ -19,6 +19,17 @@ import quip.exception.QuipException;
  */
 public final class Parser {
 
+    private static final String CMD_BYE = "bye";
+    private static final String CMD_LIST = "list";
+    private static final String CMD_DELETE = "delete";
+    private static final String CMD_MARK = "mark";
+    private static final String CMD_UNMARK = "unmark";
+    private static final String CMD_TODO = "todo";
+    private static final String CMD_DEADLINE = "deadline";
+    private static final String CMD_EVENT = "event";
+    private static final String CMD_ON = "on";
+    private static final String CMD_FIND = "find";
+
     /**
      * Private constructor to prevent instantiation of utility class.
      */
@@ -40,26 +51,26 @@ public final class Parser {
         String args = parts.length > 1 ? parts[1].trim() : "";
 
         return switch (commandType.toLowerCase()) {
-            case "bye" -> new ExitCommand();
-            case "list" -> new ListCommand();
-            case "delete" -> new DeleteCommand(parseIndex(args));
-            case "mark" -> new MarkCommand(parseIndex(args));
-            case "unmark" -> new UnmarkCommand(parseIndex(args));
-            case "todo" -> new AddTodoCommand(args);
-            case "deadline" -> {
+            case CMD_BYE -> new ExitCommand();
+            case CMD_LIST -> new ListCommand();
+            case CMD_DELETE -> new DeleteCommand(parseIndex(args));
+            case CMD_MARK -> new MarkCommand(parseIndex(args));
+            case CMD_UNMARK -> new UnmarkCommand(parseIndex(args));
+            case CMD_TODO -> new AddTodoCommand(args);
+            case CMD_DEADLINE -> {
                 if (!args.contains("/by")) {
                     throw new QuipException("Invalid deadline format. Use: <description> /by <time>");
                 }
                 yield new AddDeadlineCommand(args);
             }
-            case "event" -> {
+            case CMD_EVENT -> {
                 if (!args.contains("/from") || !args.contains("/to")) {
                     throw new QuipException("Invalid event format. Use: <description> /from <start> /to <end>");
                 }
                 yield new AddEventCommand(args);
             }
-            case "on" -> new ListDateCommand(args);
-            case "find" -> new FindCommand(args);
+            case CMD_ON -> new ListDateCommand(args);
+            case CMD_FIND -> new FindCommand(args);
             default -> throw new QuipException("I'm sorry, I don't understand that command.");
         };
     }
