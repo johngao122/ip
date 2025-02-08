@@ -17,6 +17,8 @@ import java.util.List;
 
 public class TaskList {
     private List<Task> tasks;
+    private static final DateTimeFormatter DATE_FORMATTER =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public TaskList() {
         this.tasks = new ArrayList<>();
@@ -105,23 +107,40 @@ public class TaskList {
 
     public List<Task> getTasksOnDate(String dateStr) throws QuipException {
         try {
-            LocalDate date = LocalDate.parse(dateStr);
+            LocalDate targetDate = LocalDate.parse(dateStr);
             return tasks.stream()
-                    .filter(task -> {
-                        LocalDate taskDate = null;
-                        if (task instanceof Deadline) {
-                            taskDate = LocalDateTime.parse(((Deadline) task).getDeadline(),
-                                    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toLocalDate();
-                        } else if (task instanceof Event) {
-                            taskDate = LocalDateTime.parse(((Event) task).getFrom(),
-                                    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toLocalDate();
-                        }
-                        return taskDate != null && taskDate.equals(date);
-                    })
+                    .filter(task -> isTaskOnDate(task, targetDate))
                     .toList();
         } catch (DateTimeException e) {
             throw new QuipException("Please use this format: yyyy-MM-dd");
         }
+    }
+
+    /**
+     * Checks if a task is scheduled for a specific date.
+     *
+     * @param task     The task to be checked
+     * @param targetDate The target date
+     * @return true if the task is scheduled for the target date, false otherwise
+     */
+    private boolean isTaskOnDate(Task task, LocalDate targetDate) {
+        if (task instanceof Deadline deadline) {
+            return getTaskDate(deadline.getDeadline()).equals(targetDate);
+        } else if (task instanceof Event event) {
+            return getTaskDate(event.getFrom()).equals(targetDate);
+        }
+        return false;
+    }
+
+    /**
+     * Parses a date-time string and returns the local date component.
+     *
+     * @param dateTimeStr The date-time string to be parsed
+     * @return The local date component extracted from the date-time string
+     * @throws DateTimeException if the date-time string cannot be parsed
+     */
+    private LocalDate getTaskDate(String dateTimeStr) {
+        return LocalDateTime.parse(dateTimeStr, DATE_FORMATTER).toLocalDate();
     }
 
     /**
