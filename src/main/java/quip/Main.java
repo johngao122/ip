@@ -16,6 +16,7 @@ import quip.parser.Parser;
 import quip.storage.Storage;
 import quip.task.TaskList;
 import quip.ui.JavaFxUi;
+import quip.ui.ReminderService;
 import quip.ui.UserDialogBox;
 
 import java.util.Objects;
@@ -24,19 +25,28 @@ import java.util.Objects;
  * Main application class for the Quip chat interface.
  * Handles the primary stage and scene setup.
  */
-public class Main extends Application {
+public class    Main extends Application {
     private VBox dialogContainer;
     private TextField userInput;
     private ScrollPane scrollPane;
     private TaskList tasks;
     private Storage storage;
     private JavaFxUi ui;
+    private ReminderService reminderService;
 
     @Override
     public void start(Stage stage) {
         initializeComponents();
         setupLayout(stage);
+        initializeReminderService();
         ui.showWelcome();
+    }
+
+    @Override
+    public void stop() {
+        if(reminderService != null) {
+            reminderService.stop();
+        }
     }
 
     private void initializeComponents() {
@@ -103,6 +113,11 @@ public class Main extends Application {
 
             scrollPane.setVvalue(1.0);
         }
+    }
+
+    private void initializeReminderService() {
+        reminderService = new ReminderService(tasks, (JavaFxUi) ui);
+        reminderService.start();
     }
 
 }

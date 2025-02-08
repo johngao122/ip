@@ -46,6 +46,20 @@ public class JavaFxUi extends Ui {
     }
 
     @Override
+    public void showReminders(List<String> reminders) {
+        if (reminders.isEmpty()) {
+            addQuipMessage("No upcoming tasks in the next 24 hours!");
+            return;
+        }
+
+        StringBuilder message = new StringBuilder("Here are your upcoming tasks:\n");
+        for (String reminder : reminders) {
+            message.append("  • ").append(reminder).append("\n");
+        }
+        addQuipMessage(message.toString().trim());
+    }
+
+    @Override
     public void showTaskList(List<Task> tasks) {
         if (tasks.isEmpty()) {
             addQuipMessage("Your task list is empty! Time to add some tasks.");

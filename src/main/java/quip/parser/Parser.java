@@ -1,16 +1,6 @@
 package quip.parser;
 
-import quip.command.AddDeadlineCommand;
-import quip.command.AddEventCommand;
-import quip.command.AddTodoCommand;
-import quip.command.Command;
-import quip.command.DeleteCommand;
-import quip.command.ExitCommand;
-import quip.command.FindCommand;
-import quip.command.ListCommand;
-import quip.command.ListDateCommand;
-import quip.command.MarkCommand;
-import quip.command.UnmarkCommand;
+import quip.command.*;
 import quip.exception.QuipException;
 
 /**
@@ -29,6 +19,7 @@ public final class Parser {
     private static final String CMD_EVENT = "event";
     private static final String CMD_ON = "on";
     private static final String CMD_FIND = "find";
+    private static final String CMD_REMINDER = "remind";
 
     /**
      * Private constructor to prevent instantiation of utility class.
@@ -71,6 +62,7 @@ public final class Parser {
             }
             case CMD_ON -> new ListDateCommand(args);
             case CMD_FIND -> new FindCommand(args);
+            case CMD_REMINDER -> new RemindCommand();
             default -> throw new QuipException("I'm sorry, I don't understand that command.");
         };
     }
