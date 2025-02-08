@@ -33,7 +33,9 @@ public final class Parser {
      * @throws QuipException if the input format is invalid or unrecognized
      */
     public static Command parse(String input) throws QuipException {
+        assert input != null : "Input should not be null";
         String[] parts = input.trim().split(" ", 2);
+        assert parts.length >= 1 : "Input should have at least one part";
         String commandType = parts[0];
         String args = parts.length > 1 ? parts[1].trim() : "";
 
@@ -63,6 +65,7 @@ public final class Parser {
     }
 
     private static int parseIndex(String args) throws QuipException {
+        assert args != null : "Args should not be null";
         try {
             return Integer.parseInt(args) - 1;
         } catch (NumberFormatException e) {

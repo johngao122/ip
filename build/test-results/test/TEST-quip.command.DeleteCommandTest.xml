@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="quip.command.DeleteCommandTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-02-02T07:08:14" hostname="Johns-MacBook-Pro-3.local" time="0.001">
+  <properties/>
+  <testcase name="execute_validIndex_deletesTask()" classname="quip.command.DeleteCommandTest" time="0.0"/>
+  <testcase name="execute_invalidIndex_throwsException()" classname="quip.command.DeleteCommandTest" time="0.0"/>
+  <system-out><![CDATA[_____________________________________________________________
+That task has vanished faster than your weekend plans. It's gone, mortal!
+[T][ ] test task
+Now you have 0 tasks in the list.
+_____________________________________________________________
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

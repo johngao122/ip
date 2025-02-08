@@ -26,6 +26,7 @@ public class Storage {
     public Storage() {
         this.filePath = Path.of("tasks");
         this.fileName = filePath.resolve("tasks.csv");
+        assert Files.exists(filePath) : "Storage directory does not exist";
     }
 
     /**
@@ -51,12 +52,14 @@ public class Storage {
         try {
             if (!Files.exists(fileName)) {
                 Files.createFile(fileName);
+                assert Files.exists(fileName) : "Storage file does not exist";
                 return tasks;
             }
 
             List<String> lines = Files.readAllLines(fileName);
             for (String line : lines) {
                 tasks.add(createTaskFromLine(line));
+                assert tasks.get(tasks.size() - 1) != null : "Task should not be null";
             }
             return tasks;
         } catch (IOException e) {
@@ -96,6 +99,7 @@ public class Storage {
     }
 
     private Task createTaskFromLine(String line) throws QuipException {
+        assert line != null : "Line should not be null";
         String[] parts = line.split(DELIMITER);
         if (parts.length < 3) {
             throw new QuipException("Invalid task format");
