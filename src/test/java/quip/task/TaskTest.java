@@ -59,6 +59,7 @@ class DeadlineTest {
         Deadline deadline = new Deadline("Test", "2024-01-28 14:00");
         assertEquals("2024-01-28 14:00", deadline.getDeadline());
     }
+
 }
 
 class EventTest {
