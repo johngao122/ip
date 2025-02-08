@@ -33,6 +33,24 @@ public class Ui {
         showLine();
     }
 
+    /**
+     * Shows reminder messages for upcoming tasks.
+     *
+     * @param reminders List of reminder messages to display
+     */
+    public void showReminders(List<String> reminders) {
+        showLine();
+        if (reminders.isEmpty()) {
+            System.out.println("No upcoming tasks in the next 24 hours!");
+        } else {
+            System.out.println("Here are your upcoming tasks:");
+            for (String reminder : reminders) {
+                System.out.println("  • " + reminder);
+            }
+        }
+        showLine();
+    }
+
     public void showError(String message) {
         showLine();
         System.out.println(message);
