@@ -47,6 +47,9 @@ application {
 }
 
 shadowJar {
+    manifest {
+        attributes 'Main-Class': 'quip.Launcher'
+    }
     archiveBaseName = "quip"
     archiveClassifier = null
 }
