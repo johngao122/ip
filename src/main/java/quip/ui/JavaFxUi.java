@@ -120,7 +120,7 @@ public class JavaFxUi extends Ui {
         dialogContainer.getChildren().add(new QuipDialogBox(message));
     }
 
-    private void addErrorMessage(String errorMessage){
+    private void addErrorMessage(String errorMessage) {
         dialogContainer.getChildren().add(new ErrorDialogBox(errorMessage));
     }
 }
