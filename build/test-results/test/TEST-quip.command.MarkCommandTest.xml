@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="quip.command.MarkCommandTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-02-14T12:59:52" hostname="Johns-MacBook-Pro-3.local" time="0.002">
+<testsuite name="quip.command.MarkCommandTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-02-14T13:03:25" hostname="Johns-MacBook-Pro-3.local" time="0.005">
   <properties/>
-  <testcase name="executeValidIndexMarksTask()" classname="quip.command.MarkCommandTest" time="0.001"/>
-  <testcase name="executeInvalidIndexThrowsException()" classname="quip.command.MarkCommandTest" time="0.001"/>
+  <testcase name="executeValidIndexMarksTask()" classname="quip.command.MarkCommandTest" time="0.0"/>
+  <testcase name="executeInvalidIndexThrowsException()" classname="quip.command.MarkCommandTest" time="0.004"/>
   <system-out><![CDATA[_____________________________________________________________
 Another one bites the dust: [T][X] test task
 _____________________________________________________________

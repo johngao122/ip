@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="quip.storage.StorageTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-14T12:59:52" hostname="Johns-MacBook-Pro-3.local" time="0.007">
+<testsuite name="quip.storage.StorageTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-14T13:03:25" hostname="Johns-MacBook-Pro-3.local" time="0.008">
   <properties/>
-  <testcase name="loadInvalidFormatThrowsException()" classname="quip.storage.StorageTest" time="0.002"/>
+  <testcase name="loadInvalidFormatThrowsException()" classname="quip.storage.StorageTest" time="0.003"/>
   <testcase name="saveMarkedTasksPreservesStatus()" classname="quip.storage.StorageTest" time="0.001"/>
   <testcase name="loadInvalidTaskTypeThrowsException()" classname="quip.storage.StorageTest" time="0.001"/>
   <testcase name="saveMultipleTaskTypesSavesCorrectly()" classname="quip.storage.StorageTest" time="0.001"/>

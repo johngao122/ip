@@ -5,10 +5,11 @@ import quip.exception.QuipException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Locale;
 
 public class Event extends Task {
     private static final DateTimeFormatter DISPLAY_FORMATTER =
-            DateTimeFormatter.ofPattern("yyyy-MM-dd h:mm a");
+            DateTimeFormatter.ofPattern("yyyy-MM-dd h:mm a", Locale.US);
     private static final DateTimeFormatter STORAGE_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private final LocalDateTime from;

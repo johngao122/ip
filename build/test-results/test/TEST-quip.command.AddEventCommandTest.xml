@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="quip.command.AddEventCommandTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-02-14T12:59:52" hostname="Johns-MacBook-Pro-3.local" time="0.002">
+<testsuite name="quip.command.AddEventCommandTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-02-14T13:03:25" hostname="Johns-MacBook-Pro-3.local" time="0.002">
   <properties/>
-  <testcase name="executeValidEventAddsEventTask()" classname="quip.command.AddEventCommandTest" time="0.001"/>
+  <testcase name="executeValidEventAddsEventTask()" classname="quip.command.AddEventCommandTest" time="0.002"/>
   <testcase name="executeInvalidFormatThrowsException()" classname="quip.command.AddEventCommandTest" time="0.0"/>
   <system-out><![CDATA[_____________________________________________________________
 I've added this little nugget to your to-do list:

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="quip.command.AddDeadlineCommandTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-02-14T12:59:52" hostname="Johns-MacBook-Pro-3.local" time="0.025">
+<testsuite name="quip.command.AddDeadlineCommandTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-02-14T13:03:25" hostname="Johns-MacBook-Pro-3.local" time="0.028">
   <properties/>
-  <testcase name="executeInvalidFormatThrowsException()" classname="quip.command.AddDeadlineCommandTest" time="0.011"/>
+  <testcase name="executeInvalidFormatThrowsException()" classname="quip.command.AddDeadlineCommandTest" time="0.014"/>
   <testcase name="executeValidDeadlineAddsDeadlineTask()" classname="quip.command.AddDeadlineCommandTest" time="0.013"/>
   <system-out><![CDATA[_____________________________________________________________
 I've added this little nugget to your to-do list:
