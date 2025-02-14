@@ -44,7 +44,7 @@ public class    Main extends Application {
 
     @Override
     public void stop() {
-        if(reminderService != null) {
+        if (reminderService != null) {
             reminderService.stop();
         }
     }

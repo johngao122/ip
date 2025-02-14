@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="quip.parser.ParserTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2025-02-02T07:08:14" hostname="Johns-MacBook-Pro-3.local" time="0.005">
+<testsuite name="quip.parser.ParserTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2025-02-14T12:59:52" hostname="Johns-MacBook-Pro-3.local" time="0.008">
   <properties/>
-  <testcase name="parse_deadlineCommand_returnsAddDeadlineCommand()" classname="quip.parser.ParserTest" time="0.001"/>
-  <testcase name="parse_eventCommand_returnsAddEventCommand()" classname="quip.parser.ParserTest" time="0.0"/>
-  <testcase name="parse_exitCommand_returnsExitCommand()" classname="quip.parser.ParserTest" time="0.0"/>
-  <testcase name="parse_markCommand_returnsMarkCommand()" classname="quip.parser.ParserTest" time="0.0"/>
-  <testcase name="parse_unmarkCommand_returnsUnmarkCommand()" classname="quip.parser.ParserTest" time="0.0"/>
-  <testcase name="parse_invalidDeleteIndex_throwsException()" classname="quip.parser.ParserTest" time="0.0"/>
-  <testcase name="parse_emptyTodoCommand_throwsException()" classname="quip.parser.ParserTest" time="0.001"/>
-  <testcase name="parse_deleteCommand_returnsDeleteCommand()" classname="quip.parser.ParserTest" time="0.0"/>
-  <testcase name="parse_listDateCommand_returnsListDateCommand()" classname="quip.parser.ParserTest" time="0.0"/>
-  <testcase name="parse_invalidDeadlineFormat_throwsException()" classname="quip.parser.ParserTest" time="0.0"/>
-  <testcase name="parse_listCommand_returnsListCommand()" classname="quip.parser.ParserTest" time="0.0"/>
-  <testcase name="parse_todoCommand_returnsAddTodoCommand()" classname="quip.parser.ParserTest" time="0.0"/>
-  <testcase name="parse_invalidCommand_throwsException()" classname="quip.parser.ParserTest" time="0.0"/>
-  <testcase name="parse_invalidEventFormat_throwsException()" classname="quip.parser.ParserTest" time="0.0"/>
+  <testcase name="parseEmptyTodoCommandThrowsException()" classname="quip.parser.ParserTest" time="0.001"/>
+  <testcase name="parseEventCommandReturnsAddEventCommand()" classname="quip.parser.ParserTest" time="0.0"/>
+  <testcase name="parseTodoCommandReturnsAddTodoCommand()" classname="quip.parser.ParserTest" time="0.001"/>
+  <testcase name="parseInvalidCommandThrowsException()" classname="quip.parser.ParserTest" time="0.0"/>
+  <testcase name="parseListCommandReturnsListCommand()" classname="quip.parser.ParserTest" time="0.0"/>
+  <testcase name="parseInvalidDeadlineFormatThrowsException()" classname="quip.parser.ParserTest" time="0.0"/>
+  <testcase name="parseMarkCommandReturnsMarkCommand()" classname="quip.parser.ParserTest" time="0.0"/>
+  <testcase name="parseUnmarkCommandReturnsUnmarkCommand()" classname="quip.parser.ParserTest" time="0.0"/>
+  <testcase name="parseInvalidEventFormatThrowsException()" classname="quip.parser.ParserTest" time="0.0"/>
+  <testcase name="parseExitCommandReturnsExitCommand()" classname="quip.parser.ParserTest" time="0.0"/>
+  <testcase name="parseDeadlineCommandReturnsAddDeadlineCommand()" classname="quip.parser.ParserTest" time="0.0"/>
+  <testcase name="parseListDateCommandReturnsListDateCommand()" classname="quip.parser.ParserTest" time="0.0"/>
+  <testcase name="parseDeleteCommandReturnsDeleteCommand()" classname="quip.parser.ParserTest" time="0.0"/>
+  <testcase name="parseInvalidDeleteIndexThrowsException()" classname="quip.parser.ParserTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

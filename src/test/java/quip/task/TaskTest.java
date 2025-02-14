@@ -21,20 +21,20 @@ class TaskTest {
     }
 
     @Test
-    void markAsDone_unmarkedTask_marksCorrectly() {
+    void markAsDoneUnmarkedTaskMarksCorrectly() {
         task.markAsDone();
         assertTrue(task.isDone());
     }
 
     @Test
-    void markAsUndone_markedTask_unmarksCorrectly() {
+    void markAsUndoneMarkedTaskUnmarksCorrectly() {
         task.markAsDone();
         task.markAsUndone();
         assertFalse(task.isDone());
     }
 
     @Test
-    void toString_formatsCorrectly() {
+    void toStringFormatsCorrectly() {
         assertEquals("[T][ ] Test task", task.toString());
         task.markAsDone();
         assertEquals("[T][X] Test task", task.toString());
@@ -43,19 +43,19 @@ class TaskTest {
 
 class DeadlineTest {
     @Test
-    void constructor_validDateTime_createsDeadline() throws QuipException {
+    void constructorValidDateTimeCreatesDeadline() throws QuipException {
         Deadline deadline = new Deadline("Test", "2024-01-28 14:00");
         String expected = "[D][ ] Test (by: 2024-01-28 2:00 pm)";
         assertEquals(expected, deadline.toString());
     }
 
     @Test
-    void constructor_invalidDateTime_throwsException() {
+    void constructorInvalidDateTimeThrowsException() {
         assertThrows(QuipException.class, () -> new Deadline("Test", "invalid"));
     }
 
     @Test
-    void getDeadline_returnsCorrectFormat() throws QuipException {
+    void getDeadlineReturnsCorrectFormat() throws QuipException {
         Deadline deadline = new Deadline("Test", "2024-01-28 14:00");
         assertEquals("2024-01-28 14:00", deadline.getDeadline());
     }
@@ -64,20 +64,20 @@ class DeadlineTest {
 
 class EventTest {
     @Test
-    void constructor_validDateTime_createsEvent() throws QuipException {
+    void constructorValidDateTimeCreatesEvent() throws QuipException {
         Event event = new Event("Test", "2024-01-28 14:00", "2024-01-28 15:00");
         String expected = "[E][ ] Test (from: 2024-01-28 2:00 pm to: 2024-01-28 3:00 pm)";
         assertEquals(expected, event.toString());
     }
 
     @Test
-    void constructor_endBeforeStart_throwsException() {
+    void constructorEndBeforeStartThrowsException() {
         assertThrows(QuipException.class, () ->
                 new Event("Test", "2024-01-28 15:00", "2024-01-28 14:00"));
     }
 
     @Test
-    void getFromAndTo_returnsCorrectFormat() throws QuipException {
+    void getFromAndToReturnsCorrectFormat() throws QuipException {
         Event event = new Event("Test", "2024-01-28 14:00", "2024-01-28 15:00");
         assertEquals("2024-01-28 14:00", event.getFrom());
         assertEquals("2024-01-28 15:00", event.getTo());
@@ -93,14 +93,14 @@ class TaskListTest {
     }
 
     @Test
-    void addTask_validTask_addsSuccessfully() throws QuipException {
+    void addTaskValidTaskAddsSuccessfully() throws QuipException {
         Task task = new Todo("Test");
         taskList.addTask(task);
         assertEquals(1, taskList.size());
     }
 
     @Test
-    void deleteTask_validIndex_removesTask() throws QuipException {
+    void deleteTaskValidIndexRemovesTask() throws QuipException {
         Task task = new Todo("Test");
         taskList.addTask(task);
         Task deleted = taskList.deleteTask(0);
@@ -109,14 +109,14 @@ class TaskListTest {
     }
 
     @Test
-    void markTask_validIndex_marksTask() throws QuipException {
+    void markTaskValidIndexMarksTask() throws QuipException {
         taskList.addTask(new Todo("Test"));
         taskList.markTask(0);
         assertTrue(taskList.getTask(0).isDone());
     }
 
     @Test
-    void getTasksOnDate_matchingDate_returnsCorrectTasks() throws QuipException {
+    void getTasksOnDateMatchingDateReturnsCorrectTasks() throws QuipException {
         Deadline deadline = new Deadline("Test1", "2024-01-28 14:00");
         Event event = new Event("Test2", "2024-01-28 14:00", "2024-01-28 15:00");
         Todo todo = new Todo("Test3");
@@ -130,7 +130,7 @@ class TaskListTest {
     }
 
     @Test
-    void getTasksOnDate_invalidFormat_throwsException() {
+    void getTasksOnDateInvalidFormatThrowsException() {
         assertThrows(QuipException.class, () ->
                 taskList.getTasksOnDate("invalid-date"));
     }

@@ -37,7 +37,7 @@ public class TaskList {
     public void addTask(Task task) throws QuipException {
         assert task != null : "Task cannot be null";
         int sizeBefore = tasks.size();
-        if(hasDuplicate(task)) {
+        if (hasDuplicate(task)) {
             throw new QuipException("Task already exists");
         }
         tasks.add(task);

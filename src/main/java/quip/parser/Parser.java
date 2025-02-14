@@ -1,6 +1,17 @@
 package quip.parser;
 
-import quip.command.*;
+import quip.command.Command;
+import quip.command.AddDeadlineCommand;
+import quip.command.AddEventCommand;
+import quip.command.AddTodoCommand;
+import quip.command.DeleteCommand;
+import quip.command.ExitCommand;
+import quip.command.FindCommand;
+import quip.command.ListCommand;
+import quip.command.ListDateCommand;
+import quip.command.MarkCommand;
+import quip.command.RemindCommand;
+import quip.command.UnmarkCommand;
 import quip.exception.QuipException;
 
 /**

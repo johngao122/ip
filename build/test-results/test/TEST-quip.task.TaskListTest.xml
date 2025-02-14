@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="quip.task.TaskListTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-02T07:08:14" hostname="Johns-MacBook-Pro-3.local" time="0.002">
+<testsuite name="quip.task.TaskListTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-14T12:59:52" hostname="Johns-MacBook-Pro-3.local" time="0.002">
   <properties/>
-  <testcase name="getTasksOnDate_invalidFormat_throwsException()" classname="quip.task.TaskListTest" time="0.0"/>
-  <testcase name="addTask_validTask_addsSuccessfully()" classname="quip.task.TaskListTest" time="0.001"/>
-  <testcase name="deleteTask_validIndex_removesTask()" classname="quip.task.TaskListTest" time="0.0"/>
-  <testcase name="getTasksOnDate_matchingDate_returnsCorrectTasks()" classname="quip.task.TaskListTest" time="0.001"/>
-  <testcase name="markTask_validIndex_marksTask()" classname="quip.task.TaskListTest" time="0.0"/>
+  <testcase name="markTaskValidIndexMarksTask()" classname="quip.task.TaskListTest" time="0.0"/>
+  <testcase name="getTasksOnDateInvalidFormatThrowsException()" classname="quip.task.TaskListTest" time="0.001"/>
+  <testcase name="deleteTaskValidIndexRemovesTask()" classname="quip.task.TaskListTest" time="0.0"/>
+  <testcase name="getTasksOnDateMatchingDateReturnsCorrectTasks()" classname="quip.task.TaskListTest" time="0.001"/>
+  <testcase name="addTaskValidTaskAddsSuccessfully()" classname="quip.task.TaskListTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

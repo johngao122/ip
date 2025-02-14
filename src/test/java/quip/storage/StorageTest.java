@@ -26,13 +26,13 @@ class StorageTest {
     private Storage storage;
 
     @BeforeEach
-    void setUp() {
+    void setUpStorage() {
         storage = new Storage(TEST_PATH);
         cleanTestFiles();
     }
 
     @AfterEach
-    void tearDown() {
+    void tearDownStorage() {
         cleanTestFiles();
     }
 
@@ -46,13 +46,13 @@ class StorageTest {
     }
 
     @Test
-    void load_newStorage_returnsEmptyList() throws QuipException {
+    void loadNewStorageReturnsEmptyList() throws QuipException {
         List<Task> tasks = storage.load();
         assertTrue(tasks.isEmpty());
     }
 
     @Test
-    void save_multipleTaskTypes_savesCorrectly() throws QuipException {
+    void saveMultipleTaskTypesSavesCorrectly() throws QuipException {
         Todo todo = new Todo("Read book");
         Deadline deadline = new Deadline("Submit report", "2024-01-28 14:00");
         Event event = new Event("Meeting", "2024-01-28 14:00", "2024-01-28 15:00");
@@ -68,7 +68,7 @@ class StorageTest {
     }
 
     @Test
-    void save_markedTasks_preservesStatus() throws QuipException {
+    void saveMarkedTasksPreservesStatus() throws QuipException {
         Todo todo = new Todo("Read book");
         todo.markAsDone();
 
@@ -79,7 +79,7 @@ class StorageTest {
     }
 
     @Test
-    void load_invalidFormat_throwsException() throws IOException {
+    void loadInvalidFormatThrowsException() throws IOException {
         Files.createDirectories(TEST_PATH);
         Files.write(TEST_FILE, List.of("Invalid,line"));
 
@@ -87,7 +87,7 @@ class StorageTest {
     }
 
     @Test
-    void load_invalidTaskType_throwsException() throws IOException {
+    void loadInvalidTaskTypeThrowsException() throws IOException {
         Files.createDirectories(TEST_PATH);
         Files.write(TEST_FILE, List.of("X,false,Invalid task"));
 

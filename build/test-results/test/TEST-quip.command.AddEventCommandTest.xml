@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="quip.command.AddEventCommandTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-02-02T07:08:14" hostname="Johns-MacBook-Pro-3.local" time="0.002">
+<testsuite name="quip.command.AddEventCommandTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-02-14T12:59:52" hostname="Johns-MacBook-Pro-3.local" time="0.002">
   <properties/>
-  <testcase name="execute_invalidFormat_throwsException()" classname="quip.command.AddEventCommandTest" time="0.001"/>
-  <testcase name="execute_validEvent_addsEventTask()" classname="quip.command.AddEventCommandTest" time="0.001"/>
+  <testcase name="executeValidEventAddsEventTask()" classname="quip.command.AddEventCommandTest" time="0.001"/>
+  <testcase name="executeInvalidFormatThrowsException()" classname="quip.command.AddEventCommandTest" time="0.0"/>
   <system-out><![CDATA[_____________________________________________________________
 I've added this little nugget to your to-do list:
 [E][ ] meeting (from: 2024-01-28 2:00 pm to: 2024-01-28 3:00 pm)

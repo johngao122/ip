@@ -8,7 +8,7 @@ import quip.ui.Ui;
 
 import java.util.List;
 
-public class RemindCommand extends Command{
+public class RemindCommand extends Command {
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws QuipException {
         Reminder reminder = new Reminder(tasks);

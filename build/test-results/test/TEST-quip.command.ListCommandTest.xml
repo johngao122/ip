@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="quip.command.ListCommandTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-02-02T07:08:14" hostname="Johns-MacBook-Pro-3.local" time="0.002">
+<testsuite name="quip.command.ListCommandTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-02-14T12:59:52" hostname="Johns-MacBook-Pro-3.local" time="0.002">
   <properties/>
-  <testcase name="execute_withTasks_showsList()" classname="quip.command.ListCommandTest" time="0.002"/>
+  <testcase name="executeWithTasksShowsList()" classname="quip.command.ListCommandTest" time="0.002"/>
   <system-out><![CDATA[_____________________________________________________________
 Here are the tasks in your list:
 1. [T][ ] test task
