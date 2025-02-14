@@ -23,13 +23,13 @@ public class JavaFxUi extends Ui {
 
     @Override
     public void showLoadingError() {
-        addQuipMessage("Oops! couldn't load your tasks.\n" +
+        addErrorMessage("Oops! couldn't load your tasks.\n" +
                 "Starting with an empty list.");
     }
 
     @Override
     public void showError(String message) {
-        addQuipMessage(message);
+        addErrorMessage(message);
     }
 
     @Override
@@ -118,5 +118,9 @@ public class JavaFxUi extends Ui {
 
     private void addQuipMessage(String message) {
         dialogContainer.getChildren().add(new QuipDialogBox(message));
+    }
+
+    private void addErrorMessage(String errorMessage){
+        dialogContainer.getChildren().add(new ErrorDialogBox(errorMessage));
     }
 }

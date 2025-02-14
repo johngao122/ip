@@ -45,3 +45,28 @@
     -fx-background-radius: 30;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);
 }
+
+.dialog-box {
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+}
+
+.quip-dialog-box {
+    -fx-background-color: #f0f0f0;
+}
+
+.user-dialog-box {
+    -fx-background-color: #e3f2fd;
+}
+
+.error-dialog-box {
+    -fx-background-color: #ffebee;
+    -fx-border-color: #ef5350;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+}
+
+.error-text {
+    -fx-text-fill: #c62828;
+    -fx-font-weight: bold;
+}
