@@ -4,12 +4,20 @@ import quip.exception.QuipException;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoField;
 import java.util.Locale;
+import java.util.Map;
 
 public class Deadline extends Task {
     private static final DateTimeFormatter DISPLAY_FORMATTER =
-            DateTimeFormatter.ofPattern("yyyy-MM-dd h:mm a", Locale.US);
+            new DateTimeFormatterBuilder()
+                    .appendPattern("yyyy-MM-dd h:mm")
+                    .appendPattern(" ")
+                    .appendText(ChronoField.AMPM_OF_DAY,
+                            Map.of(0L, "am", 1L, "pm"))
+                    .toFormatter(Locale.US);
     private static final DateTimeFormatter FILE_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private final LocalDateTime deadline;

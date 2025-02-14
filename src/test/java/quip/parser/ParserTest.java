@@ -13,7 +13,9 @@ import quip.command.MarkCommand;
 import quip.command.UnmarkCommand;
 import quip.exception.QuipException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 class ParserTest {
     @Test
