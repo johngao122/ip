@@ -48,7 +48,7 @@ public class JavaFxUi extends Ui {
     @Override
     public void showReminders(List<String> reminders) {
         if (reminders.isEmpty()) {
-            addQuipMessage("No upcoming tasks in the next 24 hours!");
+            addQuipMessage("Got nothing to do in the next 24 hours");
             return;
         }
 
@@ -62,7 +62,7 @@ public class JavaFxUi extends Ui {
     @Override
     public void showTaskList(List<Task> tasks) {
         if (tasks.isEmpty()) {
-            addQuipMessage("Your task list is empty! Time to add some tasks.");
+            addQuipMessage("Wow there is nothing in your list! Time to add some tasks.");
             return;
         }
         StringBuilder message = new StringBuilder("Here are the tasks in your list:\n");
