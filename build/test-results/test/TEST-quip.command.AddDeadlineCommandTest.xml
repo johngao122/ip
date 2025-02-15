@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="quip.command.AddDeadlineCommandTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-02-15T12:24:43" hostname="Johns-MacBook-Pro-3.local" time="0.054">
+  <properties/>
+  <testcase name="executeInvalidFormatThrowsException()" classname="quip.command.AddDeadlineCommandTest" time="0.027"/>
+  <testcase name="executeValidDeadlineAddsDeadlineTask()" classname="quip.command.AddDeadlineCommandTest" time="0.025"/>
+  <system-out><![CDATA[_____________________________________________________________
+I've added this little nugget to your to-do list:
+[D][ ] submit report (by: 2024-01-28 2:00 pm)
+Now you have 1 tasks in the list.
+_____________________________________________________________
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

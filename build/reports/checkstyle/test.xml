@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.45.1">
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/test/java/quip/parser/ParserTest.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/test/java/quip/storage/StorageTest.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/test/java/quip/task/TaskTest.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/test/java/quip/command/CommandTest.java">
+</file>
+</checkstyle>

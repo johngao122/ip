@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.45.1">
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/ui/QuipDialogBox.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/ui/JavaFxUi.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/ui/ReminderService.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/ui/Ui.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/ui/ErrorDialogBox.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/ui/DialogBox.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/ui/UserDialogBox.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/parser/Parser.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/storage/Storage.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/Main.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/task/TaskList.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/task/Reminder.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/task/TaskType.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/task/Event.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/task/Task.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/task/Deadline.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/task/Todo.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/Quip.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/command/ListDateCommand.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/command/DeleteCommand.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/command/UnmarkCommand.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/command/ListCommand.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/command/AddEventCommand.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/command/RemindCommand.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/command/Command.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/command/AddDeadlineCommand.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/command/MarkCommand.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/command/AddTodoCommand.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/command/FindCommand.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/command/ExitCommand.java">
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/Launcher.java">
+<error line="7" column="1" severity="warning" message="Utility classes should not have a public or default constructor." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/johngao/Desktop/Uni/Y2/CS2103/Individual Project/ip/src/main/java/quip/exception/QuipException.java">
+</file>
+</checkstyle>

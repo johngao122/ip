@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="quip.command.AddEventCommandTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-02-15T12:24:43" hostname="Johns-MacBook-Pro-3.local" time="0.003">
+  <properties/>
+  <testcase name="executeValidEventAddsEventTask()" classname="quip.command.AddEventCommandTest" time="0.002"/>
+  <testcase name="executeInvalidFormatThrowsException()" classname="quip.command.AddEventCommandTest" time="0.001"/>
+  <system-out><![CDATA[_____________________________________________________________
+I've added this little nugget to your to-do list:
+[E][ ] meeting (from: 2024-01-28 2:00 pm to: 2024-01-28 3:00 pm)
+Now you have 1 tasks in the list.
+_____________________________________________________________
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

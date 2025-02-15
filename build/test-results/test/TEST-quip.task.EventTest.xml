@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="quip.task.EventTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-02-15T12:24:44" hostname="Johns-MacBook-Pro-3.local" time="0.003">
+  <properties/>
+  <testcase name="getFromAndToReturnsCorrectFormat()" classname="quip.task.EventTest" time="0.001"/>
+  <testcase name="constructorValidDateTimeCreatesEvent()" classname="quip.task.EventTest" time="0.001"/>
+  <testcase name="constructorEndBeforeStartThrowsException()" classname="quip.task.EventTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
