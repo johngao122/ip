@@ -25,7 +25,7 @@ import java.util.Objects;
  * Main application class for the Quip chat interface.
  * Handles the primary stage and scene setup.
  */
-public class    Main extends Application {
+public class   Main extends Application {
     private VBox dialogContainer;
     private TextField userInput;
     private ScrollPane scrollPane;
